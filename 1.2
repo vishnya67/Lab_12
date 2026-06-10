@@ -1,0 +1,26 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return not self.items
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+
+def is_palindrome(text):
+    # Очищення рядка: прибираємо пробіли та зводимо до нижнього регістру
+    clean_text = "".join(char.lower() for char in text if char.isalnum())
+    
+    stack = Stack()
+    for char in clean_text:
+        stack.push(char)
+        
+    for char in clean_text:
+        if char != stack.pop():
+            return False
+            
+    return True
