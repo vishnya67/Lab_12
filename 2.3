@@ -1,0 +1,5 @@
+def multi_criteria_sort(students):
+    return sorted(
+        students,
+        key=lambda s: (-s["grade"], -s["attendance"], s["name"])
+    )
