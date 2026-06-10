@@ -1,0 +1,21 @@
+from collections import deque
+
+def queue_with_timeout(customers, service_time):
+    queue = deque(customers)
+    current_time = 0
+    served = 0
+    lost = 0
+    
+    while queue:
+        arrival_time, max_wait = queue.popleft()
+        
+        if current_time < arrival_time:
+            current_time = arrival_time
+            
+        if (current_time - arrival_time) <= max_wait:
+            served += 1
+            current_time += service_time
+        else:
+            lost += 1
+            
+    return (served, lost)
