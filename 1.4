@@ -1,0 +1,27 @@
+class Stack:
+    def __init__(self, items=None):
+        self.items = items if items is not None else []
+
+    def is_empty(self):
+        return not self.items
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+
+def stack_size(stack):
+    temp_stack = Stack()
+    count = 0
+    
+    # Переміщуємо елементи в тимчасовий стек, підраховуючи їх
+    while not stack.is_empty():
+        temp_stack.push(stack.pop())
+        count += 1
+        
+    # Повертаємо елементи назад в оригінальний стек
+    while not temp_stack.is_empty():
+        stack.push(temp_stack.pop())
+        
+    return count
