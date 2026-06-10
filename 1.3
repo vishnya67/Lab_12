@@ -1,0 +1,24 @@
+from collections import deque
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+
+    def is_empty(self):
+        return not self.items
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        return self.items.popleft() if not self.is_empty() else None
+
+def process_requests(requests):
+    queue = Queue()
+    for req in requests:
+        queue.enqueue(req)
+        
+    processed = []
+    while not queue.is_empty():
+        processed.append(queue.dequeue())
+    return processed
