@@ -1,0 +1,4 @@
+def simple_priority_queue(tasks):
+    sorted_tasks = sorted(tasks, key=lambda x: x[0])
+  
+    return [task[1] for task in sorted_tasks]
