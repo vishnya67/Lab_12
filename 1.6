@@ -1,0 +1,12 @@
+def sort_even_numbers(numbers):
+    evens = [n for n in numbers if n % 2 == 0]
+    n = len(evens)
+    
+    for i in range(n):
+        min_idx = i
+        for j in range(i + 1, n):
+            if evens[j] < evens[min_idx]:
+                min_idx = j
+        evens[i], evens[min_idx] = evens[min_idx], evens[i]
+        
+    return evens
