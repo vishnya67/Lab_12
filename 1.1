@@ -1,0 +1,22 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return not self.items
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+
+def reverse_string(text):
+    stack = Stack()
+    for char in text:
+        stack.push(char)
+    
+    result = []
+    while not stack.is_empty():
+        result.append(stack.pop())
+    return "".join(result)
